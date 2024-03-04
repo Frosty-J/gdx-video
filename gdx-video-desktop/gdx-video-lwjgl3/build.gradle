@@ -2,6 +2,12 @@ apply plugin: "java-library"
 
 apply from: '../../publish.gradle'
 
+if (JavaVersion.current().isJava9Compatible()) {
+    compileJava {
+        options.release = 8
+    }
+}
+
 configurations {
     custom
     compile.extendsFrom custom
